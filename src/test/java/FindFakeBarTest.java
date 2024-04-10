@@ -85,11 +85,11 @@ public class FindFakeBarTest {
         .map(WebElement::getText)
         .collect(Collectors.toCollection(ArrayList::new));
         // Find the fake bar
-        String fakeBar = recursion(totalBars, goldBars);
+        String fakeBar = findGoldBarWeight(totalBars, goldBars);
         System.out.println("Fake Bar is " + fakeBar);
     }
 
-    private String recursion(int totalBars, ArrayList<String> barElements) {
+    private String findGoldBarWeight(int totalBars, ArrayList<String> barElements) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         if (totalBars == 1) {
             List<WebElement> goldBarResult = driver.findElements(By.xpath(goldBarLocator));
@@ -164,11 +164,11 @@ public class FindFakeBarTest {
         resetButton.click();
 
         if (result.equals("<")) {
-            return recursion(firstBucket, new ArrayList<>(barElements.subList(0, firstBucket)));
+            return findGoldBarWeight(firstBucket, new ArrayList<>(barElements.subList(0, firstBucket)));
         } else if (result.equals(">")) {
-            return recursion(secondBucket, new ArrayList<>(barElements.subList(firstBucket, firstBucket + secondBucket)));
+            return findGoldBarWeight(secondBucket, new ArrayList<>(barElements.subList(firstBucket, firstBucket + secondBucket)));
         } else {
-            return recursion(thirdBucket,
+            return findGoldBarWeight(thirdBucket,
                     new ArrayList<>(barElements.subList(firstBucket + secondBucket, barElements.size())));
         }
     }

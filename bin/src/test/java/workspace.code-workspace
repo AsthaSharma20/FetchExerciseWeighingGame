@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../../gradle-selenium-java"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {}
+}
