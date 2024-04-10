@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+}
+
+javadoc {
+    source = sourceSets.test.allJava
+    destinationDir = file("$buildDir/docs/javadoc")
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+test {
+    useJUnitPlatform()
+}
