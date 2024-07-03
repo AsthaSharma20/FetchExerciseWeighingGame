@@ -1,1 +1,1 @@
-# FetchExerciseWeighingGame
+WeighingGameExercise
